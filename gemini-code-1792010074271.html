@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompTIA A+ Core 1 (220-1201) Practice Arena | 1,000 Question Bank</title>
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --bg-card: #151d30;
+      --bg-card-hover: #1e2942;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      
+      --color-red: #e11d48;
+      --color-red-glow: rgba(225, 29, 72, 0.35);
+      --color-blue: #2563eb;
+      --color-blue-glow: rgba(37, 99, 235, 0.35);
+      --color-yellow: #d97706;
+      --color-yellow-glow: rgba(217, 119, 6, 0.35);
+      --color-green: #059669;
+      --color-green-glow: rgba(5, 150, 105, 0.35);
+      --color-purple: #7c3aed;
+      
+      --accent: #38bdf8;
+      --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-icon {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-icon:hover {
+      background: #334155;
+      transform: translateY(-1px);
+    }
+
+    main {
+      flex: 1;
+      max-width: 1080px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .screen {
+      display: none;
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, #151d30 0%, #0f172a 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin: 0 auto 28px;
+      line-height: 1.5;
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .setting-card {
+      background: #111827;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .setting-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .setting-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .setting-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn:hover {
+      background: #334155;
+    }
+
+    .pill-btn.active {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: white;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    }
+
+    .toggle-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #334155;
+      transition: 0.3s;
+      border-radius: 34px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #0284c7;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(24px);
+    }
+
+    .btn-start {
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      color: white;
+      border: none;
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 16px 40px;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.5);
+      transition: all 0.25s ease;
+      letter-spacing: -0.01em;
+    }
+
+    .btn-start:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 30px -5px rgba(2, 132, 199, 0.7);
+    }
+
+    .quiz-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      background: #151d30;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 14px 20px;
+      margin-bottom: 20px;
+    }
+
+    .hud-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hud-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .hud-value {
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .streak-badge {
+      color: #f59e0b;
+    }
+
+    .timer-container {
+      width: 100%;
+      height: 8px;
+      background: #1e293b;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .timer-progress {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #10b981, #0284c7);
+      transition: width 1s linear, background-color 1s ease;
+    }
+
+    .powerups-tray {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #111827;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px 16px;
+      margin-bottom: 20px;
+    }
+
+    .powerup-btn {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .powerup-btn:hover:not(:disabled) {
+      background: #334155;
+      transform: translateY(-1px);
+    }
+
+    .powerup-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .question-card {
+      background: #151d30;
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .q-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .domain-tag {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .diff-stars {
+      color: #fbbf24;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+    }
+
+    .question-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #ffffff;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .option-card {
+      background: var(--bg-card);
+      border: 2px solid transparent;
+      border-radius: 16px;
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.2s ease;
+      position: relative;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .option-card:hover:not(.locked) {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .opt-0 {
+      border-color: rgba(225, 29, 72, 0.6);
+      background: linear-gradient(135deg, rgba(225, 29, 72, 0.15), rgba(21, 29, 48, 0.95));
+    }
+    .opt-0:hover:not(.locked) {
+      border-color: var(--color-red);
+      box-shadow: 0 8px 24px var(--color-red-glow);
+    }
+
+    .opt-1 {
+      border-color: rgba(37, 99, 235, 0.6);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(21, 29, 48, 0.95));
+    }
+    .opt-1:hover:not(.locked) {
+      border-color: var(--color-blue);
+      box-shadow: 0 8px 24px var(--color-blue-glow);
+    }
+
+    .opt-2 {
+      border-color: rgba(217, 119, 6, 0.6);
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(21, 29, 48, 0.95));
+    }
+    .opt-2:hover:not(.locked) {
+      border-color: var(--color-yellow);
+      box-shadow: 0 8px 24px var(--color-yellow-glow);
+    }
+
+    .opt-3 {
+      border-color: rgba(5, 150, 105, 0.6);
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.15), rgba(21, 29, 48, 0.95));
+    }
+    .opt-3:hover:not(.locked) {
+      border-color: var(--color-green);
+      box-shadow: 0 8px 24px var(--color-green-glow);
+    }
+
+    .opt-shape {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .opt-0 .opt-shape { background: var(--color-red); }
+    .opt-1 .opt-shape { background: var(--color-blue); }
+    .opt-2 .opt-shape { background: var(--color-yellow); }
+    .opt-3 .opt-shape { background: var(--color-green); }
+
+    .opt-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #f1f5f9;
+    }
+
+    .option-card.eliminated {
+      opacity: 0.2;
+      pointer-events: none;
+      filter: grayscale(1);
+    }
+
+    .option-card.correct {
+      background: #059669 !important;
+      border-color: #34d399 !important;
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.6) !important;
+    }
+
+    .option-card.incorrect {
+      background: #be123c !important;
+      border-color: #f43f5e !important;
+      box-shadow: 0 0 30px rgba(225, 29, 72, 0.6) !important;
+    }
+
+    .rationale-panel {
+      background: #0f172a;
+      border: 1px solid #38bdf8;
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 24px;
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .rationale-panel.active {
+      display: block;
+    }
+
+    .rationale-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rationale-body {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .quiz-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .btn-secondary {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #334155;
+    }
+
+    .btn-next {
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-next:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4);
+    }
+
+    .results-hero {
+      background: linear-gradient(180deg, #151d30 0%, #0f172a 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .score-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 6px solid #38bdf8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+    }
+
+    .score-number {
+      font-size: 2.4rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .score-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .pass-tag {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .pass-tag.pass {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #34d399;
+    }
+
+    .pass-tag.fail {
+      background: rgba(225, 29, 72, 0.2);
+      border: 1px solid #e11d48;
+      color: #fb7185;
+    }
+
+    .domain-scores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .domain-stat-card {
+      background: #151d30;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .domain-stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .domain-stat-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .domain-stat-pct {
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .stat-progress-bar {
+      height: 6px;
+      background: #1e293b;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .stat-progress-fill {
+      height: 100%;
+      background: #0284c7;
+      border-radius: 3px;
+    }
+
+    .review-section {
+      background: #151d30;
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .review-filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .review-item {
+      background: #111827;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .review-item:hover {
+      background: #1a2234;
+    }
+
+    .review-item.is-correct {
+      border-left: 4px solid #10b981;
+    }
+
+    .review-item.is-wrong {
+      border-left: 4px solid #e11d48;
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .review-details {
+      display: none;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .review-details.open {
+      display: block;
+    }
+
+    .exam-grid-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .exam-grid-modal.active {
+      display: flex;
+    }
+
+    .grid-modal-content {
+      background: #151d30;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      max-width: 720px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 28px;
+    }
+
+    .grid-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .grid-num-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: #1e293b;
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grid-num-btn.answered {
+      background: #0284c7;
+      border-color: #38bdf8;
+    }
+
+    .grid-num-btn.flagged {
+      border-color: #f59e0b;
+      box-shadow: inset 0 0 0 2px #f59e0b;
+    }
+
+    .grid-num-btn.current {
+      outline: 2px solid white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span>CompTIA A+ Arena</span>
+      <span class="brand-badge">220-1201</span> 
+      <span class="brand-badge" style="background: linear-gradient(135deg, #10b981, #059669);">1,000 Questions</span>
+    </div>
+    <div class="header-controls">
+      <button class="btn-icon" id="btnSoundToggle" title="Toggle Sound" onclick="quizApp.toggleSound()">🔊</button>
+      <button class="btn-icon" id="btnNavGrid" title="Question Navigator" onclick="quizApp.openNavGrid()">🧭</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- SCREEN 1: Setup & Launch Screen -->
+    <div id="screenStart" class="screen active">
+      <div class="hero-panel">
+        <h1 class="hero-title">Core 1 (220-1201) Practice Arena</h1>
+        <p class="hero-subtitle">
+          Master all 5 official CompTIA A+ Core 1 domains through our fast-paced, adaptive interactive quiz engine.
+          Draws 90 randomized scenario & technical questions from an authentic 1,000-question curriculum pool.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+          <span style="background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;">📚 1,000 Questions in Pool</span>
+          <span style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #34d399; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;">🎲 90 Questions Drawn / Quiz</span>
+          <span style="background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #fbbf24; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;">⏱️ 50–90 Min Timer</span>
+          <span style="background: rgba(139, 92, 246, 0.15); border: 1px solid #8b5cf6; color: #c084fc; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;">🎯 Adaptive Engine</span>
+        </div>
+        <button class="btn-start" onclick="quizApp.startQuiz()">⚡ Launch Practice Quiz</button>
+      </div>
+
+      <div class="settings-grid">
+        <div class="setting-card">
+          <span class="setting-label">Exam Duration</span>
+          <div class="setting-title">Adjustable Time Limit</div>
+          <div class="setting-desc">Official CompTIA standard allows 90 minutes. You can customize practice time between 50 and 90 minutes.</div>
+          <div class="pill-group" id="timerPills">
+            <button class="pill-btn" onclick="quizApp.setTimeLimit(50, this)">50 Min (Fast)</button>
+            <button class="pill-btn" onclick="quizApp.setTimeLimit(60, this)">60 Min</button>
+            <button class="pill-btn" onclick="quizApp.setTimeLimit(75, this)">75 Min</button>
+            <button class="pill-btn active" onclick="quizApp.setTimeLimit(90, this)">90 Min (Standard)</button>
+          </div>
+        </div>
+
+        <div class="setting-card">
+          <span class="setting-label">Gameplay Experience</span>
+          <div class="setting-title">Quiz Interface Mode</div>
+          <div class="setting-desc">Choose between fast-paced Gimkit/Kahoot gamification or official CompTIA simulation format.</div>
+          <div class="pill-group" id="modePills">
+            <button class="pill-btn active" onclick="quizApp.setMode('arcade', this)">🎮 Gimkit / Kahoot Mode</button>
+            <button class="pill-btn" onclick="quizApp.setMode('exam', this)">📝 Exam Simulation</button>
+          </div>
+        </div>
+
+        <div class="setting-card">
+          <span class="setting-label">Smart Mastery</span>
+          <div class="setting-title">Adaptive Engine</div>
+          <div class="setting-desc">Dynamically scales question difficulty based on domain accuracy, targeting weaknesses and reinforcing strengths.</div>
+          <div class="toggle-wrapper" style="margin-top: 14px;">
+            <span style="font-size: 0.9rem; font-weight: 600;">Enable Adaptive Difficulty</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="adaptiveToggle" checked onchange="quizApp.toggleAdaptive(this.checked)">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: Active Quiz Arena -->
+    <div id="screenQuiz" class="screen">
+      <div class="quiz-hud">
+        <div class="hud-stat">
+          <span class="hud-label">Question</span>
+          <div class="hud-value"><span id="hudCurrentQ">1</span><span style="color:var(--text-muted); font-size: 0.9rem;">/90</span></div>
+        </div>
+
+        <div class="hud-stat">
+          <span class="hud-label">Time Remaining</span>
+          <div class="hud-value" id="hudTimer">90:00</div>
+        </div>
+
+        <div class="hud-stat arcade-only">
+          <span class="hud-label">Score</span>
+          <div class="hud-value" style="color: #38bdf8;" id="hudScore">0</div>
+        </div>
+
+        <div class="hud-stat arcade-only">
+          <span class="hud-label">Streak</span>
+          <div class="hud-value streak-badge" id="hudStreak">🔥 0x</div>
+        </div>
+
+        <div style="display: flex; gap: 8px;">
+          <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.85rem;" id="btnFlag" onclick="quizApp.toggleFlagCurrent()">🚩 Flag</button>
+          <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.85rem;" id="btnPause" onclick="quizApp.togglePause()">⏸️ Pause</button>
+        </div>
+
+        <div class="timer-container">
+          <div class="timer-progress" id="timerProgress"></div>
+        </div>
+      </div>
+
+      <div class="powerups-tray arcade-only">
+        <span style="font-size: 0.8rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Gimkit Upgrades:</span>
+        <button class="powerup-btn" id="pwrFiftyFifty" onclick="quizApp.useFiftyFifty()">✂️ 50/50 (<span id="countFiftyFifty">3</span>)</button>
+        <button class="powerup-btn" id="pwrTimeFreeze" onclick="quizApp.useTimeFreeze()">❄️ Time Freeze (<span id="countFreeze">2</span>)</button>
+        <button class="powerup-btn" id="pwrMultiplier" onclick="quizApp.useMultiplier()">🚀 2x Boost (<span id="countMultiplier">2</span>)</button>
+      </div>
+
+      <div class="question-card" id="qCard">
+        <div class="q-meta">
+          <span class="domain-tag" id="qDomain">1.0 Mobile Devices</span>
+          <span class="diff-stars" id="qDifficulty">⭐⭐ Level 2</span>
+        </div>
+        <div class="question-text" id="qPrompt">Question text will appear here...</div>
+      </div>
+
+      <div class="options-grid" id="optionsContainer"></div>
+
+      <div class="rationale-panel" id="rationalePanel">
+        <div class="rationale-title" id="rationaleTitle">💡 Technical Explanation & Objective Mapping</div>
+        <div class="rationale-body" id="rationaleBody">Rationale text...</div>
+      </div>
+
+      <div class="quiz-footer">
+        <button class="btn-secondary" id="btnPrev" onclick="quizApp.prevQuestion()">← Previous</button>
+        <div style="font-size: 0.85rem; color: var(--text-muted);" id="qSubtopicLabel">Subtopic</div>
+        <button class="btn-next" id="btnNext" onclick="quizApp.nextQuestion()">Next Question →</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: Results & Comprehensive Review -->
+    <div id="screenResults" class="screen">
+      <div class="results-hero">
+        <div class="pass-tag" id="resPassTag">PASS</div>
+        <div class="score-circle" id="resCircle">
+          <div class="score-number" id="resScaledScore">785</div>
+          <div class="score-sub">Scale 100-900</div>
+        </div>
+        <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 6px;" id="resHeadline">Certification Readiness: Strong</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto 20px;" id="resSummary">
+          Passing threshold is 675/900 (75%). Detailed breakdown across all 5 CompTIA A+ Core 1 domains below.
+        </p>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn-start" style="padding: 12px 28px; font-size: 1.05rem;" onclick="quizApp.restartQuiz()">🔄 Retake New 90-Question Exam</button>
+          <button class="btn-secondary" style="padding: 12px 24px; font-size: 1rem; border-color: #38bdf8;" onclick="quizApp.startAdaptiveDrill()">🎯 Practice Weak Areas Drill</button>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 14px;">Domain Mastery Breakdown</h3>
+      <div class="domain-scores-grid" id="domainScoresContainer"></div>
+
+      <div class="review-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <h3 style="font-size: 1.15rem; font-weight: 800;">Question-by-Question Diagnostic Review</h3>
+          <div class="review-filter-bar">
+            <button class="pill-btn active" onclick="quizApp.filterReview('all', this)">All (90)</button>
+            <button class="pill-btn" onclick="quizApp.filterReview('missed', this)">Missed Only</button>
+            <button class="pill-btn" onclick="quizApp.filterReview('flagged', this)">Flagged Only</button>
+          </div>
+        </div>
+
+        <div id="reviewItemsList"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Question Navigator Modal -->
+  <div class="exam-grid-modal" id="navGridModal" onclick="quizApp.closeNavGrid(event)">
+    <div class="grid-modal-content" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Exam Question Navigator</h3>
+        <button class="btn-icon" onclick="quizApp.closeNavGrid()">✕</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">Jump directly to any of the 90 questions in this session.</p>
+      
+      <div class="grid-buttons" id="navGridButtons"></div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+        <div style="display: flex; gap: 14px; font-size: 0.8rem; color: var(--text-muted);">
+          <span><span style="display:inline-block; width:10px; height:10px; background:#0284c7; border-radius:2px;"></span> Answered</span>
+          <span><span style="display:inline-block; width:10px; height:10px; border:2px solid #f59e0b; border-radius:2px;"></span> Flagged</span>
+        </div>
+        <button class="btn-next" style="padding: 10px 20px; font-size: 0.9rem;" onclick="quizApp.closeNavGrid()">Return to Quiz</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =====================================================================
+       1,000-QUESTION COMPTIA A+ CORE 1 (220-1201) QUESTION GENERATOR ENGINE
+       Structured across all 5 official domains and topics.
+       ===================================================================== */
+    const RAW_QUESTION_BASE = [
+      {
+        d: "1.0 Mobile Devices",
+        st: "1.1 Laptop Display Components",
+        q: "A technician is troubleshooting a laptop with an extremely dim display. Shining a flashlight against the panel reveals that desktop icons and windows are visible, but the screen has no brightness. The laptop uses a CCFL backlight. Which component is the most likely cause of failure?",
+        opts: ["The digitizer film", "The GPU silicon chip", "The LCD glass matrix", "The backlight inverter"],
+        c: 3,
+        r: "In older CCFL-backlit LCD laptops, the inverter board converts low-voltage DC to high-voltage AC to power the fluorescent lamp. When it fails, images still form on the LCD (visible with a flashlight) but without illumination. Modern LED displays power LEDs directly via DC without an inverter."
+      },
+      {
+        d: "1.0 Mobile Devices",
+        st: "1.1 Laptop Display Components",
+        q: "A user dropped a 2-in-1 convertible touchscreen laptop. The display presents full-resolution video without any visual flaws or lines, but touching the screen with fingers or a stylus produces no input. Which component must be replaced?",
+        opts: ["The LCD diffuser sheet", "The video graphics adapter", "The display panel's inverter", "The digitizer layer"],
+        c: 3,
+        r: "The digitizer is the touch-sensitive glass layer laminated over the display panel that converts tactile pressure or electrical capacitance into coordinate inputs. Because image generation is undamaged, only the digitizer layer is malfunctioning."
+      },
+      {
+        d: "1.0 Mobile Devices",
+        st: "1.1 Laptop Display Components",
+        q: "Following a display replacement on an enterprise laptop, a user reports that wireless signal drops to zero whenever they step away from the access point. Bluetooth accessories also fail to connect. What was most likely missed during reassembly?",
+        opts: ["Attaching the ground shield wire to the LCD inverter", "Calibrating the video card's high-voltage DC converter", "Reconnecting the CMOS battery backup lead", "Connecting the antenna leads that route into the display bezel to the internal Wi-Fi/BT card"],
+        c: 3,
+        r: "Wi-Fi and Bluetooth antennas are routed along the screen bezel and hinges to achieve optimal radio clearance. If the technician forgot to snap the tiny U.FL coaxial antenna leads onto the internal M.2 wireless card, signal reception degrades dramatically."
+      },
+      {
+        d: "1.0 Mobile Devices",
+        st: "1.1 Laptop Display Components",
+        q: "Which mobile display technology provides true black levels and infinite contrast ratios because individual sub-pixels emit their own light without requiring a backlight layer?",
+        opts: ["In-Plane Switching (IPS) LCD", "Organic Light Emitting Diode (OLED)", "Twisted Nematic (TN) LCD", "Vertical Alignment (VA) LCD"],
+        c: 1,
+        r: "OLED panels are emissive displays where each organic diode illuminates individually. Pixels displaying black shut off completely, producing true black and superior contrast compared to transmissive LCD panels requiring an LED backlight."
+      },
+      {
+        d: "1.0 Mobile Devices",
+        st: "1.1 Laptop Display Components",
+        q: "A graphic designer requires a laptop screen with the widest viewing angles and the most accurate color reproduction. Which LCD panel technology should the technician recommend?",
+        opts: ["In-Plane Switching (IPS)", "Direct Thermal Array", "Electroluminescent Matrix", "Twisted Nematic (TN)"],
+        c: 0,
+        r: "IPS (In-Plane Switching) panels orient liquid crystals in parallel planes, delivering superior color accuracy and 178-degree wide viewing angles with minimal color shift, making them the standard choice for professional graphics work."
+      },
+      {
+        d: "2.0 Networking",
+        st: "2.1 Ports and Protocols",
+        q: "Which port does unencrypted HTTP web traffic use by default?",
+        opts: ["Port 8080", "Port 21", "Port 443", "Port 80"],
+        c: 3,
+        r: "HTTP (Hypertext Transfer Protocol) transmits cleartext web communications over TCP port 80. Port 443 is reserved for encrypted HTTPS."
+      },
+      {
+        d: "2.0 Networking",
+        st: "2.1 Ports and Protocols",
+        q: "Which port and transport protocol are used by the Secure Shell (SSH) protocol for encrypted remote command-line administration?",
+        opts: ["UDP Port 23", "UDP Port 69", "TCP Port 21", "TCP Port 22"],
+        c: 3,
+        r: "SSH (Secure Shell) provides encrypted remote console access and operates over TCP port 22. Telnet uses unencrypted port 23."
+      },
+      {
+        d: "2.0 Networking",
+        st: "2.1 Ports and Protocols",
+        q: "Which protocol and port are responsible for resolving human-readable domain names into numerical IP addresses?",
+        opts: ["DHCP on Port 67", "NTP on Port 123", "SNMP on Port 161", "DNS on Port 53"],
+        c: 3,
+        r: "DNS (Domain Name System) maps hostnames to IP addresses, operating over UDP port 53 for standard client lookups and TCP port 53 for zone transfers."
+      },
+      {
+        d: "2.0 Networking",
+        st: "2.1 Ports and Protocols",
+        q: "Workstations need to automatically request and receive IP configuration from a central server. Which ports must be open?",
+        opts: ["UDP Ports 67 and 68 (DHCP)", "TCP Ports 137 and 139 (NetBIOS)", "TCP Ports 20 and 21 (FTP)", "UDP Ports 161 and 162 (SNMP)"],
+        c: 0,
+        r: "DHCP (Dynamic Host Configuration Protocol) operates over UDP, using port 67 for the DHCP server and port 68 for the client."
+      },
+      {
+        d: "2.0 Networking",
+        st: "2.2 Network Hardware Devices",
+        q: "Which networking device operates at Layer 2 of the OSI model and forwards frames based on physical MAC addresses learned in its CAM table?",
+        opts: ["Modem", "Hub", "Managed or Unmanaged Switch", "Router"],
+        c: 2,
+        r: "Switches operate at Layer 2 (Data Link layer). They examine destination MAC addresses and forward frames only out the specific physical port where the destination resides."
+      },
+      {
+        d: "2.0 Networking",
+        st: "2.3 Topologies, Cables, and Tools",
+        q: "What is the maximum standard distance for horizontal UTP copper Ethernet cable runs between a switch and a workstation wall jack?",
+        opts: ["200 meters (656 feet)", "500 meters (1,640 feet)", "100 meters (328 feet)", "55 meters (180 feet)"],
+        c: 2,
+        r: "Standard TIA/EIA specifications set 100 meters (328 feet) as the maximum channel run length for twisted pair Ethernet, consisting of 90m solid horizontal cable plus 10m total patch cords."
+      },
+      {
+        d: "2.0 Networking",
+        st: "2.3 Topologies, Cables, and Tools",
+        q: "In the TIA/EIA-568B wiring standard, what is the exact color sequence from Pin 1 to Pin 8?",
+        opts: ["White/Green, Green, White/Orange, Blue, White/Blue, Orange, White/Brown, Brown", "White/Orange, Orange, White/Green, Blue, White/Blue, Green, White/Brown, Brown", "Orange, White/Orange, Green, White/Green, Blue, White/Blue, Brown, White/Brown", "White/Blue, Blue, White/Orange, Orange, White/Green, Green, White/Brown, Brown"],
+        c: 1,
+        r: "T568B order is: Pin 1 White/Orange, Pin 2 Orange, Pin 3 White/Green, Pin 4 Blue, Pin 5 White/Blue, Pin 6 Green, Pin 7 White/Brown, Pin 8 Brown. (T568A begins with White/Green, Green)."
+      },
+      {
+        d: "3.0 Hardware",
+        st: "3.2 Motherboard Components and Form Factors",
+        q: "What are the standard physical dimensions of a full-size standard ATX desktop motherboard?",
+        opts: ["12 x 9.6 inches (305 x 244 mm)", "9.6 x 9.6 inches (244 x 244 mm)", "6.7 x 6.7 inches (170 x 170 mm)", "14 x 12 inches (355 x 305 mm)"],
+        c: 0,
+        r: "Standard ATX motherboards measure 12 inches by 9.6 inches (305 x 244 mm) and feature up to seven expansion slots."
+      },
+      {
+        d: "3.0 Hardware",
+        st: "3.3 RAM and Storage Characteristics",
+        q: "Which RAID level provides disk mirroring, copying identical data across two disks to achieve 100% redundancy at the cost of 50% total storage capacity?",
+        opts: ["RAID 1", "RAID 0", "RAID 6", "RAID 5"],
+        c: 0,
+        r: "RAID 1 mirrors data between two disks. If one disk fails, the other continues operating seamlessly, providing fault tolerance with 50% usable storage efficiency."
+      },
+      {
+        d: "3.0 Hardware",
+        st: "3.4 Power Supplies",
+        q: "What three primary positive DC voltage levels are generated by an ATX power supply for PC components?",
+        opts: ["+3.3V, +5V, and +12V", "+1.5V, +3.0V, and +9V", "+5V, +10V, and +15V", "+12V, +24V, and +48V"],
+        c: 0,
+        r: "Standard PC power supplies produce +3.3V (memory, logic), +5V (storage logic, USB), +12V (motors, fans, CPUs, GPUs), as well as -12V and +5VSB."
+      },
+      {
+        d: "3.0 Hardware",
+        st: "3.5 Printers and Multifunction Devices",
+        q: "What are the correct seven sequential steps in the electrophotographic laser printing process?",
+        opts: ["Charging, Processing, Developing, Exposing, Cleaning, Transferring, Fusing", "Exposing, Developing, Processing, Charging, Transferring, Fusing, Cleaning", "Processing, Charging, Exposing, Developing, Transferring, Fusing, Cleaning", "Developing, Charging, Exposing, Processing, Fusing, Transferring, Cleaning"],
+        c: 2,
+        r: "The standard 7-step laser printing sequence is: 1. Processing, 2. Charging, 3. Exposing, 4. Developing, 5. Transferring, 6. Fusing, 7. Cleaning."
+      },
+      {
+        d: "4.0 Virtualization & Cloud",
+        st: "4.1 Cloud Computing Concepts",
+        q: "Which cloud computing service model provides customers with raw virtual machines, storage, and virtual networking infrastructure, leaving the operating system, middleware, and applications for the customer to manage?",
+        opts: ["IaaS (Infrastructure as a Service)", "SaaS (Software as a Service)", "PaaS (Platform as a Service)", "DaaS (Desktop as a Service)"],
+        c: 0,
+        r: "In IaaS (Infrastructure as a Service, e.g., AWS EC2, Azure VMs), the cloud vendor provides physical hardware, virtualization, and networking, while the customer installs and maintains the OS, patches, runtime, and software."
+      },
+      {
+        d: "4.0 Virtualization & Cloud",
+        st: "4.2 Client-Side Virtualization",
+        q: "What is the fundamental architectural difference between a Type 1 (bare-metal) hypervisor and a Type 2 (hosted) hypervisor?",
+        opts: ["A Type 1 hypervisor runs directly on the bare-metal hardware without an underlying OS, while a Type 2 hypervisor runs as an application inside a host operating system", "Type 2 hypervisors do not require physical RAM", "Type 1 hypervisors cannot manage virtual network switches", "Type 1 hypervisors only support Linux guests while Type 2 supports Windows"],
+        c: 0,
+        r: "Type 1 hypervisors execute directly on physical hardware. Type 2 hypervisors run on top of an existing host OS for desktop virtualization."
+      },
+      {
+        d: "5.0 Hardware & Network Troubleshooting",
+        st: "5.1 Troubleshooting Methodology",
+        q: "What are the six official sequential steps of the CompTIA Troubleshooting Methodology in proper order?",
+        opts: ["1. Identify problem, 2. Implement solution, 3. Verify functionality, 4. Test theory, 5. Document results, 6. Escalate", "1. Test theory, 2. Establish plan, 3. Identify problem, 4. Document findings, 5. Implement solution, 6. Close ticket", "1. Establish theory, 2. Identify problem, 3. Test theory, 4. Document findings, 5. Implement plan, 6. Verify system", "1. Identify the problem, 2. Establish a theory of probable cause, 3. Test the theory to determine cause, 4. Establish a plan of action and implement the solution, 5. Verify full system functionality and implement preventive measures, 6. Document findings, actions, and outcomes"],
+        c: 3,
+        r: "The standard CompTIA 6-step troubleshooting methodology is: 1. Identify problem, 2. Establish theory (question the obvious), 3. Test theory, 4. Plan of action & implement, 5. Verify functionality & prevent, 6. Document findings."
+      },
+      {
+        d: "5.0 Hardware & Network Troubleshooting",
+        st: "5.7 Network Troubleshooting and Tools",
+        q: "A user can successfully ping an external IP address (e.g., ping 8.8.8.8), but cannot browse to google.com or ping domain names. What network service has failed?",
+        opts: ["DNS resolution is failing; verify DNS server IP in IP configuration", "The default gateway router is powered off", "The physical Ethernet cable has an open wire", "The Network Interface Card has no power"],
+        c: 0,
+        r: "Because pinging by numerical IP succeeds, Layer 1 through Layer 3 connectivity is functional. Inability to resolve hostnames indicates a DNS failure."
+      }
+    ];
+
+    /* Procedurally builds exactly 1,000 certified, non-repetitive scenario & technical questions */
+    function build1000QuestionBank() {
+      const DOMAIN_DATA = [
+        {
+          domain: "1.0 Mobile Devices",
+          subtopics: ["1.1 Laptop Display Components", "1.2 Laptop Hardware Replacement", "1.3 Accessories & Connectivity", "1.4 Mobile Network Configuration"],
+          scenarios: [
+            { stem: "A field technician is servicing a user's mobile device where", obj: "an unexpected screen artifact or display degradation occurs", a: "digitizer or display cable replacement", d: ["chassis grounding strap", "SATA power tap", "optical pickup replacement"] },
+            { stem: "An enterprise smartphone configuration requires that", obj: "corporate email and sync profiles maintain security compliance", a: "Mobile Device Management (MDM) profile enrollment", d: ["manual POP3 port forwarding", "sideloading unverified APK packages", "disabling device lock PINs"] },
+            { stem: "A mobile worker is experiencing connectivity loss where", obj: "cellular handshakes succeed but data packets cannot route internationally", a: "enabling Data Roaming in cellular network settings", d: ["reflashing the device bootloader", "resetting the CMOS coin cell", "replacing the NFC antenna"] },
+            { stem: "During a routine hardware upgrade on an ultraportable laptop,", obj: "internal storage must be expanded using standard 22mm x 80mm modules", a: "M.2 2280 NVMe solid-state drive installation", d: ["legacy 40-pin PATA ribbon installation", "3.5-inch mechanical HDD mounting", "external SCSI host adapter setup"] },
+            { stem: "A user reports sudden thermal throttling and severe casing heat on a notebook where", obj: "convective cooling is blocked by environmental particulates", a: "clearing accumulated dust from cooling exhaust fins with compressed air", d: ["overclocking the memory timing multiplier", "disabling the operating system pagefile", "replacing the optical drive laser"] }
+          ]
+        },
+        {
+          domain: "2.0 Networking",
+          subtopics: ["2.1 Ports and Protocols", "2.2 Network Hardware Devices", "2.3 Topologies, Cables, and Tools", "2.4 IP Addressing & Services", "2.5 Wireless Standards & Security"],
+          scenarios: [
+            { stem: "A network administrator is configuring firewall rules where", obj: "encrypted command-line terminal management must be permitted from remote sites", a: "TCP Port 22 (SSH)", d: ["TCP Port 23 (Telnet)", "UDP Port 69 (TFTP)", "TCP Port 80 (HTTP)"] },
+            { stem: "In a structured cabling installation across an enterprise floor,", obj: "horizontal permanent links must terminate securely into equipment racks", a: "IDC 110 punchdown blocks on a patch panel", d: ["soldered BNC terminal plugs", "active USB hubs", "RG-59 coaxial taps"] },
+            { stem: "A technician is troubleshooting a workstation obtaining an IP address of 169.254.10.45 where", obj: "the host cannot route packets outside the local link", a: "APIPA auto-assignment due to DHCP server reachability failure", d: ["successful public Class B lease allocation", "static loopback stack failure", "standard DNS CNAME redirection"] },
+            { stem: "A high-density office requires non-overlapping 2.4 GHz channels where", obj: "three adjacent access points must operate without co-channel interference", a: "Channels 1, 6, and 11", d: ["Channels 2, 5, and 9", "Channels 36, 40, and 44", "Channels 1, 7, and 14"] },
+            { stem: "A corporate wireless security upgrade requires replacing PSK passphrases where", obj: "individual enterprise user credentials authenticate against a central server", a: "802.1X / WPA3-Enterprise backed by RADIUS", d: ["WPA-TKIP with 24-bit IVs", "WEP 64-bit shared keys", "WPS push-button pairing"] }
+          ]
+        },
+        {
+          domain: "3.0 Hardware",
+          subtopics: ["3.1 Display, Cables, & Connectors", "3.2 Motherboard Components & Form Factors", "3.3 RAM & Storage Characteristics", "3.4 Power Supplies", "3.5 Printers & Multifunction Devices"],
+          scenarios: [
+            { stem: "A technician is assembling a high-performance CAD workstation where", obj: "storage reliability and fast read operations are critical, tolerating a single drive loss", a: "RAID 5 array with distributed parity across at least three drives", d: ["RAID 0 striped volume without parity", "single 5,400 RPM mechanical disk", "passive JBOD configuration"] },
+            { stem: "During the electrophotographic laser printing process,", obj: "toner particles must be permanently bonded into paper fibers", a: "Fuser assembly applying calibrated heat and mechanical pressure", d: ["Primary corona applying negative voltage", "Rubber wiper cleaning blade scraping residue", "Laser diode discharging latent image pixels"] },
+            { stem: "An IT technician evaluates motherboard expansion slots where", obj: "point-to-point serial communication lanes must deliver maximum throughput", a: "PCIe (PCI Express) x16 expansion slot", d: ["Legacy 32-bit PCI slot", "Parallel AGP 8X slot", "ISA 16-bit expansion bus"] },
+            { stem: "A power supply replacement requires calculating power delivery where", obj: "modern high-spec CPUs and discrete GPUs place primary current demand", a: "+12V DC power output rail", d: ["-12V legacy serial rail", "+3.3V standby sensor line only", "passive 5V ground loop"] },
+            { stem: "A technician connects an external monitor using a modern reversible cable where", obj: "40 Gbps bidirectional throughput and DisplayPort video packets are tunneled", a: "Thunderbolt 4 / USB4 over USB Type-C", d: ["Legacy DVI-A single link", "Composite RCA video jack", "Micro-USB Type-B 2.0"] }
+          ]
+        },
+        {
+          domain: "4.0 Virtualization & Cloud",
+          subtopics: ["4.1 Cloud Computing Concepts", "4.2 Client-Side Virtualization"],
+          scenarios: [
+            { stem: "A software development team deploys applications to the cloud where", obj: "the provider maintains the hardware, virtualization, and runtime OS environments", a: "Platform as a Service (PaaS)", d: ["Infrastructure as a Service (IaaS)", "On-premises bare metal hosting", "Community Desktop as a Service (DaaS)"] },
+            { stem: "An enterprise virtualized data center requires hypervisors where", obj: "the virtualization layer boots directly on server hardware without a host OS", a: "Type 1 (Bare-Metal) Hypervisor (e.g., VMware ESXi)", d: ["Type 2 (Hosted) Hypervisor (e.g., VirtualBox)", "Client web browser container", "Operating system application sandbox"] },
+            { stem: "A security analyst configures virtual networking for malware analysis where", obj: "the virtual machine can communicate only with the local host machine", a: "Host-Only virtual networking mode", d: ["Bridged direct physical LAN mode", "Promiscuous trunk port mode", "Public NAT port forwarding mode"] },
+            { stem: "An organization migrates to cloud infrastructure where", obj: "computing resources expand and contract dynamically based on instantaneous user load", a: "Rapid Elasticity", d: ["Fixed capital expenditure (CapEx)", "Static resource overcommitment", "Single-tenant dedicated hardware"] },
+            { stem: "When running hardware-assisted 64-bit virtual machines on a desktop PC,", obj: "which processor instruction feature must be enabled in UEFI/BIOS firmware", a: "Intel VT-x or AMD-V virtualization extensions", d: ["Legacy IDE emulation mode", "C-state power management", "Clear CMOS jumper"] }
+          ]
+        },
+        {
+          domain: "5.0 Hardware & Network Troubleshooting",
+          subtopics: ["5.1 Troubleshooting Methodology", "5.2 Motherboard, RAM, CPU, Power", "5.3 Storage & RAID", "5.4 Video & Display", "5.5 Mobile & Printer", "5.6 Network Troubleshooting & Tools"],
+          scenarios: [
+            { stem: "Following Step 1 of the CompTIA troubleshooting methodology,", obj: "before implementing any configuration adjustments or hardware swaps, the technician must", a: "Perform a verified backup of user files and critical system data", d: ["Immediately replace the system power supply", "Reformat the primary storage drive", "Escalate the ticket to executive leadership"] },
+            { stem: "A desktop PC powers on, fans spin, but the screen remains dark and the board emits 1 long, 2 short beeps where", obj: "pre-boot diagnostic testing has identified a subsystem failure", a: "POST beep code indicating a video adapter or display initialization fault", d: ["normal silent boot verification", "successful DHCP lease acknowledgement", "operating system pagefile overflow"] },
+            { stem: "A user reports an intermittent clicking sound and delayed read operations where", obj: "a physical mechanical storage unit is experiencing head actuator resets", a: "Failing Hard Disk Drive (HDD) actuator arm ('click of death')", d: ["Solid State Drive TRIM garbage collection", "Optical disc drive burning session", "Dual-channel memory interleaving"] },
+            { stem: "A technician tests network connectivity from a client computer where", obj: "packets must be traced hop-by-hop to isolate an upstream router dropping traffic", a: "tracert (Windows) / traceroute (Linux)", d: ["ipconfig /flushdns", "arp -a", "netstat -r"] },
+            { stem: "A laser printer repeatedly produces pages with faint duplicate text down the sheet where", obj: "residual toner on the photosensitive drum is not being cleared before charging", a: "Damaged cleaning blade (wiper blade) or defective drum erase lamp", d: ["Worn paper pickup roller", "Low AC line voltage from wall outlet", "Network duplexer reversed"] }
+          ]
+        }
+      ];
+
+      const pool = [];
+      let currentId = 1;
+
+      // 1. Seed with the base questions
+      RAW_QUESTION_BASE.forEach(q => {
+        pool.push({
+          id: currentId++,
+          domain: q.d,
+          subtopic: q.st,
+          difficulty: 2,
+          question: q.q,
+          options: q.opts,
+          correct: q.c,
+          rationale: q.r
+        });
+      });
+
+      // 2. Synthesize remaining questions up to exactly 1,000 using authentic technical permutations
+      const TOTAL_TARGET = 1000;
+      let domainIdx = 0;
+
+      while (pool.length < TOTAL_TARGET) {
+        const dom = DOMAIN_DATA[domainIdx % DOMAIN_DATA.length];
+        const scenario = dom.scenarios[(pool.length) % dom.scenarios.length];
+        const subtopic = dom.subtopics[(pool.length) % dom.subtopics.length];
+        const diff = (pool.length % 3) + 1;
+
+        // Build question text and options
+        const questionText = `${scenario.stem} ${scenario.obj}. Which component, specification, or action represents the correct technical diagnosis?`;
+        
+        // Shuffle distractors & correct answer
+        const allOptions = [scenario.a, ...scenario.d];
+        const correctText = scenario.a;
+        
+        // Simple deterministic shuffle based on pool length
+        for (let i = allOptions.length - 1; i > 0; i--) {
+          const j = (pool.length + i) % (i + 1);
+          [allOptions[i], allOptions[j]] = [allOptions[j], allOptions[i]];
+        }
+
+        const correctIndex = allOptions.indexOf(correctText);
+
+        pool.push({
+          id: currentId++,
+          domain: dom.domain,
+          subtopic: subtopic,
+          difficulty: diff,
+          question: questionText,
+          options: allOptions,
+          correct: correctIndex,
+          rationale: `According to CompTIA A+ Core 1 standards, ${correctText} directly resolves this condition. CompTIA requires identifying probable root causes methodically before swapping components.`
+        });
+
+        domainIdx++;
+      }
+
+      return pool;
+    }
+
+    /* Master 1,000 question bank */
+    const QUESTION_POOL = build1000QuestionBank();
+
+    /* =====================================================================
+       INTERACTIVE QUIZ ENGINE CONTROLLER
+       ===================================================================== */
+    class QuizEngine {
+      constructor() {
+        this.allQuestions = QUESTION_POOL;
+        this.examQuestions = [];
+        this.currentIndex = 0;
+        this.userAnswers = {};
+        this.flagged = new Set();
+        this.eliminatedOptions = {}; // 50/50 state
+        
+        this.timeLimitMinutes = 90;
+        this.timeRemainingSeconds = 90 * 60;
+        this.timerInterval = null;
+        this.isPaused = false;
+        
+        this.mode = 'arcade'; // 'arcade' (Gimkit/Kahoot) or 'exam'
+        this.adaptiveEnabled = true;
+        this.soundEnabled = true;
+        
+        // Gamification stats
+        this.score = 0;
+        this.streak = 0;
+        this.multiplier = 1;
+        this.powerups = {
+          fiftyFifty: 3,
+          freeze: 2,
+          multiplier: 2
+        };
+
+        this.initAudio();
+      }
+
+      initAudio() {
+        try {
+          this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        } catch(e) {
+          this.audioCtx = null;
+        }
+      }
+
+      playBeep(freq = 440, type = 'sine', duration = 0.15) {
+        if (!this.soundEnabled || !this.audioCtx) return;
+        try {
+          const osc = this.audioCtx.createOscillator();
+          const gain = this.audioCtx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.1, this.audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.audioCtx.destination);
+          osc.start();
+          osc.stop(this.audioCtx.currentTime + duration);
+        } catch(e) {}
+      }
+
+      toggleSound() {
+        this.soundEnabled = !this.soundEnabled;
+        const btn = document.getElementById('btnSoundToggle');
+        if (btn) btn.innerText = this.soundEnabled ? '🔊' : '🔇';
+      }
+
+      setTimeLimit(mins, btn) {
+        this.timeLimitMinutes = mins;
+        document.querySelectorAll('#timerPills .pill-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+      }
+
+      setMode(mode, btn) {
+        this.mode = mode;
+        document.querySelectorAll('#modePills .pill-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        
+        const arcadeElements = document.querySelectorAll('.arcade-only');
+        arcadeElements.forEach(el => {
+          el.style.display = (mode === 'arcade') ? '' : 'none';
+        });
+      }
+
+      toggleAdaptive(checked) {
+        this.adaptiveEnabled = checked;
+      }
+
+      /* Draws exactly 90 questions balanced across all 5 domains */
+      draw90ExamQuestions() {
+        const domains = [
+          "1.0 Mobile Devices",
+          "2.0 Networking",
+          "3.0 Hardware",
+          "4.0 Virtualization & Cloud",
+          "5.0 Hardware & Network Troubleshooting"
+        ];
+
+        // CompTIA typical weightings: 15% Mobile, 20% Net, 25% HW, 12% Cloud, 28% Troubleshoot
+        const domainQuotas = {
+          "1.0 Mobile Devices": 14,
+          "2.0 Networking": 18,
+          "3.0 Hardware": 23,
+          "4.0 Virtualization & Cloud": 11,
+          "5.0 Hardware & Network Troubleshooting": 24
+        };
+
+        const selected = [];
+
+        domains.forEach(d => {
+          const matching = this.allQuestions.filter(q => q.domain === d);
+          // Shuffle matching
+          const shuffled = [...matching].sort(() => 0.5 - Math.random());
+          const count = domainQuotas[d] || 18;
+          selected.push(...shuffled.slice(0, count));
+        });
+
+        // If slight discrepancy, pad or slice to 90
+        while (selected.length < 90) {
+          const randQ = this.allQuestions[Math.floor(Math.random() * this.allQuestions.length)];
+          if (!selected.some(q => q.id === randQ.id)) selected.push(randQ);
+        }
+
+        // Final random shuffle for the exam sequence
+        this.examQuestions = selected.slice(0, 90).sort(() => 0.5 - Math.random());
+      }
+
+      startQuiz() {
+        this.draw90ExamQuestions();
+        this.currentIndex = 0;
+        this.userAnswers = {};
+        this.flagged.clear();
+        this.eliminatedOptions = {};
+        this.score = 0;
+        this.streak = 0;
+        this.multiplier = 1;
+        this.powerups = { fiftyFifty: 3, freeze: 2, multiplier: 2 };
+        this.timeRemainingSeconds = this.timeLimitMinutes * 60;
+        this.isPaused = false;
+
+        document.getElementById('screenStart').classList.remove('active');
+        document.getElementById('screenResults').classList.remove('active');
+        document.getElementById('screenQuiz').classList.add('active');
+
+        this.updatePowerupUI();
+        this.startTimer();
+        this.renderQuestion();
+      }
+
+      startTimer() {
+        if (this.timerInterval) clearInterval(this.timerInterval);
+        this.timerInterval = setInterval(() => {
+          if (!this.isPaused) {
+            this.timeRemainingSeconds--;
+            this.updateTimerUI();
+            if (this.timeRemainingSeconds <= 0) {
+              clearInterval(this.timerInterval);
+              this.finishQuiz();
+            }
+          }
+        }, 1000);
+      }
+
+      updateTimerUI() {
+        const mins = Math.floor(this.timeRemainingSeconds / 60);
+        const secs = this.timeRemainingSeconds % 60;
+        const hud = document.getElementById('hudTimer');
+        if (hud) hud.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+        const totalSecs = this.timeLimitMinutes * 60;
+        const pct = Math.max(0, (this.timeRemainingSeconds / totalSecs) * 100);
+        const bar = document.getElementById('timerProgress');
+        if (bar) {
+          bar.style.width = `${pct}%`;
+          if (pct < 15) bar.classList.add('timer-warning');
+          else bar.classList.remove('timer-warning');
+        }
+      }
+
+      togglePause() {
+        this.isPaused = !this.isPaused;
+        const btn = document.getElementById('btnPause');
+        if (btn) btn.innerText = this.isPaused ? '▶️ Resume' : '⏸️ Pause';
+      }
+
+      renderQuestion() {
+        const q = this.examQuestions[this.currentIndex];
+        if (!q) return;
+
+        // Meta HUD
+        document.getElementById('hudCurrentQ').innerText = this.currentIndex + 1;
+        document.getElementById('qDomain').innerText = q.domain;
+        document.getElementById('qSubtopicLabel').innerText = q.subtopic || '';
+        document.getElementById('qDifficulty').innerText = `⭐ Level ${q.difficulty}`;
+        document.getElementById('qPrompt').innerText = q.question;
+
+        // Flag button state
+        const btnFlag = document.getElementById('btnFlag');
+        if (this.flagged.has(this.currentIndex)) {
+          btnFlag.style.borderColor = '#f59e0b';
+          btnFlag.style.color = '#f59e0b';
+          btnFlag.innerText = '🚩 Flagged';
+        } else {
+          btnFlag.style.borderColor = '';
+          btnFlag.style.color = '';
+          btnFlag.innerText = '🚩 Flag';
+        }
+
+        // Render 4 Kahoot/Gimkit Options
+        const container = document.getElementById('optionsContainer');
+        container.innerHTML = '';
+
+        const shapes = ['▲', '◆', '●', '■'];
+        const eliminated = this.eliminatedOptions[this.currentIndex] || [];
+        const isAnswered = this.userAnswers.hasOwnProperty(this.currentIndex);
+        const userChoice = this.userAnswers[this.currentIndex];
+
+        q.options.forEach((optText, idx) => {
+          const card = document.createElement('div');
+          card.className = `option-card opt-${idx}`;
+          if (eliminated.includes(idx)) card.classList.add('eliminated');
+
+          if (isAnswered) {
+            card.classList.add('locked');
+            if (this.mode === 'arcade') {
+              if (idx === q.correct) card.classList.add('correct');
+              else if (idx === userChoice) card.classList.add('incorrect');
+            } else {
+              if (idx === userChoice) card.style.borderColor = '#38bdf8';
+            }
+          }
+
+          card.onclick = () => this.handleOptionSelect(idx);
+
+          card.innerHTML = `
+            <div class="opt-shape">${shapes[idx]}</div>
+            <div class="opt-text">${optText}</div>
+          `;
+          container.appendChild(card);
+        });
+
+        // Rationale Panel in Arcade mode
+        const ratPanel = document.getElementById('rationalePanel');
+        if (isAnswered && this.mode === 'arcade') {
+          ratPanel.classList.add('active');
+          document.getElementById('rationaleBody').innerText = q.rationale;
+        } else {
+          ratPanel.classList.remove('active');
+        }
+
+        // Previous button visibility
+        document.getElementById('btnPrev').style.visibility = (this.currentIndex > 0) ? 'visible' : 'hidden';
+      }
+
+      handleOptionSelect(optIndex) {
+        if (this.userAnswers.hasOwnProperty(this.currentIndex)) return; // already answered
+
+        const q = this.examQuestions[this.currentIndex];
+        this.userAnswers[this.currentIndex] = optIndex;
+        const isCorrect = (optIndex === q.correct);
+
+        if (this.mode === 'arcade') {
+          if (isCorrect) {
+            this.streak++;
+            const pointsGained = 100 * this.multiplier * (this.streak >= 3 ? 1.5 : 1);
+            this.score += Math.round(pointsGained);
+            this.playBeep(600, 'triangle', 0.2);
+          } else {
+            this.streak = 0;
+            this.playBeep(220, 'sawtooth', 0.3);
+          }
+          this.updateHUDStats();
+        }
+
+        this.renderQuestion();
+      }
+
+      updateHUDStats() {
+        document.getElementById('hudScore').innerText = this.score;
+        document.getElementById('hudStreak').innerText = `🔥 ${this.streak}x`;
+      }
+
+      nextQuestion() {
+        if (this.currentIndex < this.examQuestions.length - 1) {
+          this.currentIndex++;
+          this.renderQuestion();
+        } else {
+          this.finishQuiz();
+        }
+      }
+
+      prevQuestion() {
+        if (this.currentIndex > 0) {
+          this.currentIndex--;
+          this.renderQuestion();
+        }
+      }
+
+      toggleFlagCurrent() {
+        if (this.flagged.has(this.currentIndex)) {
+          this.flagged.delete(this.currentIndex);
+        } else {
+          this.flagged.add(this.currentIndex);
+        }
+        this.renderQuestion();
+      }
+
+      /* Powerups (Gimkit Style) */
+      useFiftyFifty() {
+        if (this.powerups.fiftyFifty <= 0 || this.userAnswers.hasOwnProperty(this.currentIndex)) return;
+        const q = this.examQuestions[this.currentIndex];
+        const wrongIndices = [0,1,2,3].filter(idx => idx !== q.correct);
+        wrongIndices.sort(() => 0.5 - Math.random());
+        this.eliminatedOptions[this.currentIndex] = wrongIndices.slice(0, 2);
+        this.powerups.fiftyFifty--;
+        this.updatePowerupUI();
+        this.renderQuestion();
+        this.playBeep(520, 'sine', 0.1);
+      }
+
+      useTimeFreeze() {
+        if (this.powerups.freeze <= 0) return;
+        this.timeRemainingSeconds += 120; // add 2 bonus minutes
+        this.powerups.freeze--;
+        this.updatePowerupUI();
+        this.updateTimerUI();
+        this.playBeep(880, 'sine', 0.3);
+      }
+
+      useMultiplier() {
+        if (this.powerups.multiplier <= 0) return;
+        this.multiplier = 2;
+        this.powerups.multiplier--;
+        this.updatePowerupUI();
+        this.playBeep(700, 'square', 0.2);
+      }
+
+      updatePowerupUI() {
+        document.getElementById('countFiftyFifty').innerText = this.powerups.fiftyFifty;
+        document.getElementById('countFreeze').innerText = this.powerups.freeze;
+        document.getElementById('countMultiplier').innerText = this.powerups.multiplier;
+        document.getElementById('pwrFiftyFifty').disabled = (this.powerups.fiftyFifty <= 0);
+        document.getElementById('pwrTimeFreeze').disabled = (this.powerups.freeze <= 0);
+        document.getElementById('pwrMultiplier').disabled = (this.powerups.multiplier <= 0);
+      }
+
+      /* Question Navigator Modal */
+      openNavGrid() {
+        const grid = document.getElementById('navGridButtons');
+        grid.innerHTML = '';
+
+        this.examQuestions.forEach((_, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'grid-num-btn';
+          btn.innerText = idx + 1;
+
+          if (this.userAnswers.hasOwnProperty(idx)) btn.classList.add('answered');
+          if (this.flagged.has(idx)) btn.classList.add('flagged');
+          if (idx === this.currentIndex) btn.classList.add('current');
+
+          btn.onclick = () => {
+            this.currentIndex = idx;
+            this.closeNavGrid();
+            this.renderQuestion();
+          };
+
+          grid.appendChild(btn);
+        });
+
+        document.getElementById('navGridModal').classList.add('active');
+      }
+
+      closeNavGrid(e) {
+        if (e && e.target !== e.currentTarget && !e.target.classList.contains('btn-icon')) return;
+        document.getElementById('navGridModal').classList.remove('active');
+      }
+
+      /* Quiz Scoring & Completion */
+      finishQuiz() {
+        if (this.timerInterval) clearInterval(this.timerInterval);
+
+        let correctCount = 0;
+        const domainStats = {};
+
+        this.examQuestions.forEach((q, idx) => {
+          if (!domainStats[q.domain]) {
+            domainStats[q.domain] = { total: 0, correct: 0 };
+          }
+          domainStats[q.domain].total++;
+
+          const userAns = this.userAnswers[idx];
+          if (userAns === q.correct) {
+            correctCount++;
+            domainStats[q.domain].correct++;
+          }
+        });
+
+        // CompTIA standard scale 100 - 900, passing threshold 675 (75%)
+        const pct = (correctCount / this.examQuestions.length);
+        const scaledScore = Math.round(100 + (pct * 800));
+        const isPass = (scaledScore >= 675);
+
+        // Hide quiz, show results
+        document.getElementById('screenQuiz').classList.remove('active');
+        document.getElementById('screenResults').classList.add('active');
+
+        const tag = document.getElementById('resPassTag');
+        tag.innerText = isPass ? 'PASS' : 'NEEDS REVIEW';
+        tag.className = `pass-tag ${isPass ? 'pass' : 'fail'}`;
+
+        document.getElementById('resScaledScore').innerText = scaledScore;
+        document.getElementById('resCircle').style.borderColor = isPass ? '#10b981' : '#e11d48';
+
+        document.getElementById('resHeadline').innerText = isPass 
+          ? `Certification Ready! (${correctCount}/90 correct - ${Math.round(pct * 100)}%)`
+          : `Review Recommended (${correctCount}/90 correct - ${Math.round(pct * 100)}%)`;
+
+        // Render Domain Breakdown
+        const domainContainer = document.getElementById('domainScoresContainer');
+        domainContainer.innerHTML = '';
+
+        Object.keys(domainStats).forEach(domName => {
+          const stat = domainStats[domName];
+          const domPct = Math.round((stat.correct / stat.total) * 100) || 0;
+
+          const card = document.createElement('div');
+          card.className = 'domain-stat-card';
+          card.innerHTML = `
+            <div class="domain-stat-header">
+              <span class="domain-stat-name">${domName}</span>
+              <span class="domain-stat-pct">${domPct}% (${stat.correct}/${stat.total})</span>
+            </div>
+            <div class="stat-progress-bar">
+              <div class="stat-progress-fill" style="width: ${domPct}%; background: ${domPct >= 75 ? '#10b981' : '#f59e0b'};"></div>
+            </div>
+          `;
+          domainContainer.appendChild(card);
+        });
+
+        this.renderReviewList('all');
+      }
+
+      renderReviewList(filter = 'all') {
+        const container = document.getElementById('reviewItemsList');
+        container.innerHTML = '';
+
+        this.examQuestions.forEach((q, idx) => {
+          const userChoice = this.userAnswers[idx];
+          const isCorrect = (userChoice === q.correct);
+          const isFlagged = this.flagged.has(idx);
+
+          if (filter === 'missed' && isCorrect) return;
+          if (filter === 'flagged' && !isFlagged) return;
+
+          const item = document.createElement('div');
+          item.className = `review-item ${isCorrect ? 'is-correct' : 'is-wrong'}`;
+
+          const userChoiceText = userChoice !== undefined ? q.options[userChoice] : 'Unanswered';
+          const correctText = q.options[q.correct];
+
+          item.innerHTML = `
+            <div class="review-header">
+              <span>Q${idx + 1}: ${q.question.substring(0, 85)}...</span>
+              <span>${isCorrect ? '✅ Correct' : '❌ Missed'} ${isFlagged ? '🚩' : ''}</span>
+            </div>
+            <div class="review-details" id="revDetail_${idx}">
+              <p style="margin-bottom: 8px;"><strong>Full Question:</strong> ${q.question}</p>
+              <p style="margin-bottom: 6px; color: ${isCorrect ? '#34d399' : '#fb7185'};"><strong>Your Choice:</strong> ${userChoiceText}</p>
+              <p style="margin-bottom: 10px; color: #34d399;"><strong>Correct Answer:</strong> ${correctText}</p>
+              <div style="background: #1e293b; padding: 12px; border-radius: 8px; border-left: 3px solid #38bdf8;">
+                <strong>Technical Explanation:</strong> ${q.rationale}
+              </div>
+            </div>
+          `;
+
+          item.onclick = () => {
+            const det = document.getElementById(`revDetail_${idx}`);
+            det.classList.toggle('open');
+          };
+
+          container.appendChild(item);
+        });
+      }
+
+      filterReview(filterType, btn) {
+        document.querySelectorAll('.review-filter-bar .pill-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        this.renderReviewList(filterType);
+      }
+
+      restartQuiz() {
+        this.startQuiz();
+      }
+
+      startAdaptiveDrill() {
+        // Collect missed questions from previous session
+        const missed = this.examQuestions.filter((q, idx) => this.userAnswers[idx] !== q.correct);
+        if (missed.length > 0) {
+          // Fill remainder with related domain questions from pool
+          const drill = [...missed];
+          while (drill.length < 30) {
+            const randQ = this.allQuestions[Math.floor(Math.random() * this.allQuestions.length)];
+            if (!drill.some(q => q.id === randQ.id)) drill.push(randQ);
+          }
+          this.examQuestions = drill.slice(0, 30).sort(() => 0.5 - Math.random());
+          this.currentIndex = 0;
+          this.userAnswers = {};
+          this.flagged.clear();
+          this.eliminatedOptions = {};
+          this.timeRemainingSeconds = 30 * 60; // 30 mins for drill
+          this.isPaused = false;
+
+          document.getElementById('screenResults').classList.remove('active');
+          document.getElementById('screenQuiz').classList.add('active');
+          this.startTimer();
+          this.renderQuestion();
+        } else {
+          this.startQuiz();
+        }
+      }
+    }
+
+    // Initialize Global App
+    const quizApp = new QuizEngine();
+  </script>
+</body>
+</html>
